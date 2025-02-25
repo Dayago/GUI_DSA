@@ -7,4 +7,5 @@ class ensamble_data:
         self.df = df 
 
     def fetch_data(self, path):
-        data = pd.read_csv()
+        self.df = pd.read_csv(path)
+

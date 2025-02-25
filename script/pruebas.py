@@ -2,18 +2,16 @@ import pandas as pd
 
 
 
-# df = pd.read_csv("C:\Users\LASER\Documents\Python\datos\Documents\materials.csv")
+"""Read data from csv"""
 df = pd.read_csv("..\Documents\materials.csv")
-
+df = df.drop("Unnamed: 0",axis=1)
 print(df)
 
 titles = df.columns.values
 
-for title in titles:
-    print(title)
-    print(df[title].nunique())
+duplicate = df[df.duplicated(subset =['description'], keep =False)]
+df = df.drop_duplicates()
+print(duplicate)
+print(df)
 
-value_duplicated = df["description"].duplicated()
-
-for enumerate(idx,value) in value_duplicated:
-    print(value)
+df = df.to_csv("..\Documents\data_materials.csv", index=False)
